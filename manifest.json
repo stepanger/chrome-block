@@ -1,0 +1,32 @@
+{
+  "manifest_version": 2, 
+  "name": "Chocolate", 
+  "version": "0.1",
+  "description": "Chocolate - Place labels for unwanted sites, then lock access",
+  "browser_action": {
+    "default_title": "Chocolate"
+  },
+  "background": {
+    "scripts": [
+        "src/app.js"
+    ],
+    "persistent": true
+  },
+  "short_name": "Chocolate",
+  "permissions": [
+      "webRequest",
+      "storage",
+      "<all_urls>"
+  ],
+   "content_scripts":[
+    {
+      "js":[
+          "build/jquery-1.11.3.min.js"
+      ],
+      "matches":[
+        "<all_urls>"
+      ],
+      "run_at": "document_start"
+    }
+  ]
+}
