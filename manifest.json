@@ -15,6 +15,7 @@
   "short_name": "Chocolate",
   "permissions": [
       "webRequest",
+      "webRequestBlocking",
       "storage",
       "<all_urls>"
   ],
