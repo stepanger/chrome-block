@@ -8,6 +8,7 @@
   },
   "background": {
     "scripts": [
+        "src/storage.js",
         "src/app.js"
     ],
     "persistent": true
@@ -18,12 +19,13 @@
       "webRequest",
       "webRequestBlocking",
       "storage",
+      "contextMenus",
       "<all_urls>"
   ],
   "commands": {
         "block_site": {
           "suggested_key": {
-            "default": "    Ctrl+Shift+Y"
+            "default": "Ctrl+Shift+Y"
           },
           "description": "Toggle feature foo"
         }
@@ -31,7 +33,9 @@
    "content_scripts":[
     {
       "js":[
-          "build/jquery-1.11.3.min.js"
+          "build/jquery-1.11.3.min.js",
+          "src/storage.js",
+          "src/content.js"
       ],
       "matches":[
         "<all_urls>"

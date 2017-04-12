@@ -12,12 +12,17 @@
    //    ]
    //},["blocking"])
     
-    chrome.commands.onCommand.addListener(function(command) {
-        console.log('Command:', command);
-      });
     
-    chrome.tabs.onUpdated.addListener(function(id,info,tab) {
-        console.log(tab);
+    chrome.contextMenus.create({
+        "title": "Chocolate - Заблокировать страницу",
+        "contexts":[
+            "page","selection",
+            "link","editable",
+            "image","video","audio"
+        ],
+        "onclick": (function(info, tab){
+            console.log(tab);
+        })
     });
     
 }())
