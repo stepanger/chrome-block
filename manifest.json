@@ -8,6 +8,7 @@
   },
   "background": {
     "scripts": [
+        "src/config.js",
         "src/storage.js",
         "src/app.js"
     ],
@@ -25,9 +26,7 @@
    "content_scripts":[
     {
       "js":[
-          "build/jquery-1.11.3.min.js",
-          "src/storage.js",
-          "src/content.js"
+          "build/jquery-1.11.3.min.js"
       ],
       "matches":[
         "<all_urls>"

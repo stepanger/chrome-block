@@ -4,19 +4,6 @@
     
     "use strict";
     
-    /*
-    
-    ***Пример***
-    
-    {
-        "history": [
-            "habr",
-            "google"
-        ]
-    }
-    
-    */
-    
     var chromeLocal = chrome.storage.local;
     
     
@@ -35,6 +22,11 @@
                 console.info(err);
                 return
             }
+            
+            if(!callback){
+                return
+            }
+            
             callback();
         });
     };
@@ -71,6 +63,11 @@
      * @return [callback]
     */
     myModel.clearStorage = function(callback){
+        
+        if(!callback){
+            chromeLocal.clear();
+            return
+        }
         chromeLocal.clear(callback);
     };
     
@@ -85,6 +82,12 @@
      * @return [callback]
     */
     myModel.removeStorage = function(key, callback){
+        
+        if(!callback){
+            chromeLocal.remove(key);
+            return
+        }
+        
         chromeLocal.remove(key, callback);
     };
     
