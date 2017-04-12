@@ -14,11 +14,20 @@
   },
   "short_name": "Chocolate",
   "permissions": [
+      "tabs",
       "webRequest",
       "webRequestBlocking",
       "storage",
       "<all_urls>"
   ],
+  "commands": {
+        "block_site": {
+          "suggested_key": {
+            "default": "    Ctrl+Shift+Y"
+          },
+          "description": "Toggle feature foo"
+        }
+    },
    "content_scripts":[
     {
       "js":[
