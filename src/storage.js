@@ -30,7 +30,7 @@
      * @return [callback]
     */
     myModel.setStorage = function(obj, callback){
-        chromeLocal.set(arrya, function(err) {
+        chromeLocal.set(obj, function(err) {
             if(err){
                 console.info(err);
                 return
