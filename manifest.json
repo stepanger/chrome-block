@@ -10,7 +10,10 @@
     "scripts": [
         "src/config.js",
         "src/storage.js",
-        "src/app.js"
+        "src/blockPage.js",
+        "src/blockWebRequest.js",
+        "src/startPage.js",
+        "src/menu.js"
     ],
     "persistent": true
   },
