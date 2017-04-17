@@ -1,40 +1,46 @@
 {
-  "manifest_version": 2, 
-  "name": "Chocolate", 
-  "version": "0.1",
-  "description": "Chocolate - Place labels for unwanted sites, then lock access",
-  "browser_action": {
-    "default_title": "Chocolate"
-  },
-  "background": {
-    "scripts": [
-        "src/config.js",
-        "src/storage.js",
-        "src/blockPage.js",
-        "src/blockWebRequest.js",
-        "src/startPage.js",
-        "src/menu.js"
-    ],
-    "persistent": true
-  },
-  "short_name": "Chocolate",
-  "permissions": [
-      "tabs",
-      "webRequest",
-      "webRequestBlocking",
-      "storage",
-      "contextMenus",
-      "<all_urls>"
-  ],
-   "content_scripts":[
-    {
-      "js":[
-          "build/jquery-1.11.3.min.js"
-      ],
-      "matches":[
+    "manifest_version": 2, 
+    "name": "Chocolate", 
+    "version": "0.1",
+    "description": "Blocks an unwanted site or page",
+    "icons": { 
+        "16": "icon/icon16.png",
+        "48": "icon/icon48.png",
+        "128": "icon/icon128.png"
+    },
+    "browser_action": {
+        "default_title": "Chocolate"
+    },
+    "author": "Stepan (email:creadtive472@gmail.com)",
+    "background": {
+        "scripts": [
+            "src/config.js",
+            "src/storage.js",
+            "src/blockPage.js",
+            "src/blockWebRequest.js",
+            "src/startPage.js",
+            "src/menu.js"
+        ],
+        "persistent": true
+    },
+    "short_name": "Chocolate",
+    "permissions": [
+        "tabs",
+        "webRequest",
+        "webRequestBlocking",
+        "storage",
+        "contextMenus",
         "<all_urls>"
-      ],
-      "run_at": "document_start"
-    }
-  ]
+    ],
+    "content_scripts":[
+        {
+            "js":[
+                "build/jquery-1.11.3.min.js"
+            ],
+            "matches":[
+                "<all_urls>"
+            ],
+            "run_at": "document_start"
+        }
+    ]
 }
