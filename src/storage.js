@@ -6,16 +6,17 @@
     
     var chromeLocal = chrome.storage.local;
     
-    
     /**
      * setStorage
-     *
-     * CHROMESTO.setStorage({"history": ["habr", "google"]}, function(){});
-     *
+     * 
      * Заносит значения в chrome.storage.local
-     * @param {obj}  object (ключ: значение) записи
-     * @return [callback]
-    */
+     * 
+     * CHROMESTO.setStorage({"history": ["habr", "google"]}, function(){});
+     * 
+     * @param {object}   obj     (ключ: значение) записи
+     * @param {function} callback
+     * @returns {function}   chromeLocal.set
+     */
     myModel.setStorage = function(obj, callback){
         chromeLocal.set(obj, function(err) {
             if(err){
@@ -27,27 +28,28 @@
                 return
             }
             
-            callback();
+            return callback();
         });
     };
     
     /**
      * getStorage
-     *
+     * 
+     * Получает значения из chrome.storage.local
+     * 
      * CHROMESTO.getStorage("hictory and null", function(page){console.log(page)});
-     *
-     * получает значения из chrome.storage.local
-     * @param {string}  string and null
-     * @param {callback}  function(page)
-     * @return [callback]
-    */    
+     * 
+     * @param {string}   string   ключ записи
+     * @param {function} callback function(page) 
+     * @returns {function}   chromeLocal.get
+     */
     myModel.getStorage = function(string, callback){
         chromeLocal.get(function(page) {
                 
-            if(string == null){
-                callback(page);   
+            if(string == "null"){
+                return callback(page);   
             }else{
-                callback(page[string]);
+                return callback(page[string]);
             }
             
         });
@@ -55,53 +57,50 @@
     
     /**
      * clearStorage
-     *
-     * CHROMESTO.clearStorage(function(){});
-     *
+     * 
      * Удаляет все значения из chrome.storage.local
-     * @param {callback}  function(){}
-     * @return [callback]
-    */
+     * 
+     * @param   {function} callback 
+     * @returns {function} chromeLocal.clear
+     */
     myModel.clearStorage = function(callback){
         
         if(!callback){
-            chromeLocal.clear();
-            return
+            return chromeLocal.clear();
         }
-        chromeLocal.clear(callback);
+        return chromeLocal.clear(callback);
     };
     
     /**
      * removeStorage
-     *
-     * CHROMESTO.removeStorage("history", function(){})
-     *
-     * Удаляет значениt по ключу из chrome.storage.local
-     * @param {string}  ключ в записи
-     * @param {callback}  function(){}
-     * @return [callback]
-    */
+     * 
+     * Удаляет значени по ключу из chrome.storage.local
+     * 
+     * @param   {string} key       Ключ в записи
+     * @param   {function} callback 
+     * @returns {function} chromeLocal.remove
+     */
     myModel.removeStorage = function(key, callback){
         
         if(!callback){
-            chromeLocal.remove(key);
-            return
+            return chromeLocal.remove(key);
         }
         
-        chromeLocal.remove(key, callback);
+        return chromeLocal.remove(key, callback);
     };
     
     /**
      * memoryStorage
-     *
-     * CHROMESTO.memoryStorage(function(bytesInUse){console.log(bytesInUse)});
-     *
+     * 
      * Получает объем (в байтах), используемый в chrome.storage.local
-     * @param {callback}  function(bytesInUse){}
-     * @return [callback]
-    */
+     * 
+     * CHROMESTO.memoryStorage(function(bytesInUse){console.log(bytesInUse)});
+     * 
+     * @param {function} callback 
+     * @returns {function} chromeLocal.getBytesInUse
+     */
     myModel.memoryStorage = function(callback){
-        chromeLocal.getBytesInUse(function(bytesInUse){
+        return chromeLocal.getBytesInUse(function(bytesInUse){
             callback(bytesInUse);
         })
     };

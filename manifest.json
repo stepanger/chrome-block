@@ -9,7 +9,8 @@
         "128": "icon/icon128.png"
     },
     "browser_action": {
-        "default_title": "Chocolate"
+        "default_title": "Chocolate",
+        "default_popup": "popup.html"
     },
     "author": "Stepan (email:creadtive472@gmail.com)",
     "background": {
