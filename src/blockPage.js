@@ -42,7 +42,7 @@
      */
     function addChromeURL(key, value){
         
-        if(!key && value){
+        if(!key && !value){
             return console.error("addChromeURL - передано key:"+key+" value:"+value);
         }
         
@@ -90,6 +90,9 @@
      */
     myModel.blockPage = function(key, value, query){
         
+        if(!query){
+            return console.error("blockPage - передано query:"+query);
+        }
         
         if(query === "url"){
             return addChromeURL(key, value);
@@ -104,3 +107,6 @@
     return myModel
     
 }(Chocolate || {}));
+
+
+Checking values
