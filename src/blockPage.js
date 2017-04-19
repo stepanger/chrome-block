@@ -18,10 +18,14 @@
     
     function createURL(str){
         
+        if(!str){
+            return console.error("createURL - Передано пустое значение!");;
+        }
+        
         var parser = document.createElement('a');
         parser.href = str;
     
-        return parser.protocol + "//"+parser.hostname+"/*";;
+        return parser.protocol + "//"+parser.hostname+"/*";
     };
     
     /**
@@ -37,6 +41,10 @@
      * @param {string} value Адрес страницы
      */
     function addChromeURL(key, value){
+        
+        if(!key && value){
+            return console.error("addChromeURL - передано key:"+key+" value:"+value);
+        }
         
         CHROMESTO.getStorage(OPTIONS.STORAGE_NAME, function(block){
             
