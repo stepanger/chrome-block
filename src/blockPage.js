@@ -107,6 +107,3 @@
     return myModel
     
 }(Chocolate || {}));
-
-
-Checking values
