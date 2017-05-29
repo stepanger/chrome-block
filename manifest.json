@@ -2,7 +2,7 @@
     "manifest_version": 2, 
     "name": "Chocolate", 
     "version": "0.3",
-    "description": "Blocks an unwanted site or page",
+    "description": "Блокирует нежелательный сайт или страницу",
     "icons": { 
         "16": "icon/icon16.png",
         "48": "icon/icon48.png",
