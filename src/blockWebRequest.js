@@ -18,7 +18,7 @@
         return chrome.webRequest.onHeadersReceived.addListener(function(details){
             console.log(details);
             return {
-                redirectUrl: OPTIONS.REDIRECT_URL
+                redirectUrl: CHROMESTO.redirectURL(OPTIONS.REDIRECT_URL)
             };
         },{
             types: [

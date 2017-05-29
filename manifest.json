@@ -17,6 +17,7 @@
         "scripts": [
             "src/config.js",
             "src/storage.js",
+            "src/redirect.js",
             "src/blockPage.js",
             "src/blockWebRequest.js",
             "src/startPage.js",
