@@ -16,6 +16,7 @@
     function addHTMLStorage(filterMass){
         
         if(!filterMass){
+            $(".dataBlock blockquote").text(OPTIONS.THERE_ARE_NO_BLOCKS);
             return;
         }
         
