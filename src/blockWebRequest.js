@@ -1,4 +1,4 @@
-;var Chocolate = (function (myModel) {
+var Chocolate = (function (myModel) {
     
     console.log("Chocolate ==> blockWebRequest.js");
     

@@ -1,5 +1,5 @@
 
-;var OPTIONS = (function () {
+var OPTIONS = (function () {
 
     console.log("OPTIONS.js ==> options");
     

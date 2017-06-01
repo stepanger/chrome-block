@@ -1,4 +1,4 @@
-;var Chocolate = (function (myModel) {
+var Chocolate = (function (myModel) {
     
     console.log("Chocolate ==> blockPage.js");
     
@@ -19,14 +19,14 @@
     function createURL(str){
         
         if(!str){
-            return console.error("createURL - Передано пустое значение!");;
+            return console.error("createURL - Передано пустое значение!");
         }
         
         var parser = document.createElement('a');
         parser.href = str;
     
         return parser.protocol + "//"+parser.hostname+"/*";
-    };
+    }
     
     /**
      * addChromeURL

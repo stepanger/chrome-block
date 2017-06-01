@@ -1,4 +1,4 @@
-;var CHROMESTO = (function (myModel) {
+var CHROMESTO = (function (myModel) {
     
     console.log("CHROME ==> redirect.js");
     
@@ -8,7 +8,7 @@
         
         return mass[Math.floor(Math.random() * mass.length)];
         
-    };
+    }
     
     /**
      * redirectURL

@@ -25,7 +25,7 @@
                 text: index
             }).appendTo($(".border"));
         });
-    };
+    }
     
     function deletStorage(text){
         CHROMESTO.getStorage("block", function(page){
