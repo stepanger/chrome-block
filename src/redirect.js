@@ -5,9 +5,7 @@ var CHROMESTO = (function (myModel) {
     "use strict";
 
     function rand(mass){
-        
         return mass[Math.floor(Math.random() * mass.length)];
-        
     }
     
     /**
@@ -19,11 +17,7 @@ var CHROMESTO = (function (myModel) {
      *          
      */
     myModel.redirectURL = function(redirect){
-        
-        console.log(redirect);
-        
         return rand(redirect)
-        
     };
     
     return myModel

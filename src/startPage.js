@@ -18,5 +18,17 @@
          
     });
     
+    chrome.runtime.onInstalled.addListener(function(){
+        console.info("Start APP")
+        
+        CHROMESTO.getStorage("redirect", function(page){
+            if(!page){
+                CHROMESTO.setStorage({redirect: [OPTIONS.REDIRECT_URL]},function(){});
+                return;
+            }
+        })
+        
+    })
+    
     
 }())

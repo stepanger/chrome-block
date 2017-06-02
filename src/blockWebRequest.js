@@ -9,7 +9,7 @@ var Chocolate = (function (myModel) {
      * 
      * Блокировка массив страниц arr_block,
      * тип страниц OPTIONS.TYPE_OF_PAGES,
-     * редирект на страницу OPTIONS.REDIRECT_URL
+     * редирект на страницу CHROMESTO.redirectURL(page) из storage[redirect]
      * 
      * @param   {Array} arr_block массив URL
      * @returns {function}   webRequest
@@ -17,12 +17,13 @@ var Chocolate = (function (myModel) {
     
     
     myModel.blockWebRequest = function (arr_block){
+        
+        //Запрос в storage[redirect]
         CHROMESTO.getStorage("redirect", function(page){
             
-            console.log(page)
+            console.info(page)
             
-            return chrome.webRequest.onHeadersReceived.addListener(function(details){
-                console.log(details);
+            return chrome.webRequest.onBeforeRequest.addListener(function(details){
                 return {
                     redirectUrl: CHROMESTO.redirectURL(page)
                 };
@@ -38,32 +39,3 @@ var Chocolate = (function (myModel) {
     return myModel
     
 }(Chocolate || {}));
-
-/*
-
-    myModel.blockWebRequest = function (arr_block){
-        CHROMESTO.getStorage("redirect", function(page){
-            
-            console.log(page)
-            
-            return chrome.webRequest.onHeadersReceived.addListener(function(details){
-                console.log(details);
-                return {
-                    redirectUrl: CHROMESTO.redirectURL(page)
-                };
-            },{
-            types: [
-                OPTIONS.TYPE_OF_PAGES
-            ],
-                urls: arr_block
-            },["blocking"])
-        })
-    };
-    
-    return myModel
-
-*/
-
-chrome.webRequest.handlerBehaviorChanged(function(){
-    console.log("handlerBehaviorChanged");
-})

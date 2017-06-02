@@ -2,47 +2,35 @@
     
     $(document).ready(function(){
         
-        addRedirect();
-    
+        //Показ списка заблакированных сайтов
+        CHROMESTO.getStorage("block", function(page){
+            addHTMLStorage(page);
+        });
+        
+        CHROMESTO.getStorage("redirect", function(page){
+            $(".listRedirect span").text(page)  
+        })
+        
         $(".redirectControl").on("click", ".redirectOK", function(){
             
-            var href = $($(this).siblings(".redirect")).val();
-            
+            var href = $(this).siblings(".redirect").val();
             addRedirect((Chocolate.addURL(href)).slice(0,-1));
             
         })
-        
-        CHROMESTO.getStorage("block", function(page){
-            
-            addHTMLStorage(page);
-        });
         
         $("ul").on("click", "li", function(){
             $(this).remove();
             deletStorage($(this).text());
         })
-        
     })
     
     function addRedirect(site){
-        CHROMESTO.getStorage("redirect", function(page){
             
-            if(!page){
-                CHROMESTO.setStorage({redirect: [OPTIONS.REDIRECT_URL]},function(){});
-                chrome.runtime.reload();
-                return;
-            }
-            
-            if(site){
-                CHROMESTO.setStorage({redirect: [site]},function(){});
-                $(".listRedirect span").text(site)
-                chrome.runtime.reload();
-                return;
-            }
-            
-            $(".listRedirect span").text(page)
-
-        });
+        if(site){
+            CHROMESTO.setStorage({redirect: [site]},function(){});
+            chrome.runtime.reload(); //Перезагрузка для blockWebRequest
+            return;
+        }
     }
     
     function addHTMLStorage(filterMass){
@@ -77,8 +65,5 @@
             });
         });
     }
-    
-    
-    
     
 }(jQuery));

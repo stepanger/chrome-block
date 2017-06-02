@@ -10,24 +10,24 @@ var Chocolate = (function (myModel) {
      * Получает значение адресной строки,
      * возращая host страницы
      * 
-     * createURL("http://google.com/g1231"); //http://google.com/*
+     * createURL("http://google.com/g1231"); http://google.com/*
      * 
      * @param   {string} str URL страници
      * @returns {string} Адрес сайта
      */
     
-    function createURL(str){
+    function createURL(url){
         
-        if(!str){
+        if(!url){
             return console.error("createURL - Передано пустое значение!");
         }
         
-        if(!(OPTIONS.PATTERN_URL).test(str)){
+        if(!(OPTIONS.PATTERN_URL).test(url)){
             return console.error("createURL - не валидно url");
         }
         
         var parser = document.createElement('a');
-        parser.href = str;
+        parser.href = url;
     
         return parser.protocol + "//"+parser.hostname+"/*";
     }
@@ -57,26 +57,27 @@ var Chocolate = (function (myModel) {
             //при пустом значении block
             if(!block){
                 
-              var block = '{"block":{"'+key+'": "'+value+'"}}';
-                  block = JSON.parse(block);   
+                var block = '{"block":{"'+key+'": "'+value+'"}}';
+                block = JSON.parse(block);   
                 
-              CHROMESTO.setStorage(block, function(){
+                CHROMESTO.setStorage(block, function(){
                   
-                  // Перезапуск
-                  chrome.runtime.reload();
-              });
+                    // Перезапуск
+                    chrome.runtime.reload();
+                });
                 
-              return;
-        }
+                return;
+            }
           
-        block[key] = value;
+            block[key] = value;
         
-        CHROMESTO.setStorage({block: block}, function(){
-            // Перезапуск
-            chrome.runtime.reload();
-        });
+            CHROMESTO.setStorage({block: block}, function(){
+                
+                // Перезапуск
+                chrome.runtime.reload();
+            });
           
-      });
+        });
         
     };
     
@@ -111,7 +112,7 @@ var Chocolate = (function (myModel) {
     /**
      * addURL
      *  
-     *  Добавление редиректа
+     * Добавление редиректа
      * 
      * Chocolate.addURL("http://google.com/*")
      * 
