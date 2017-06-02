@@ -14,20 +14,56 @@ var Chocolate = (function (myModel) {
      * @param   {Array} arr_block массив URL
      * @returns {function}   webRequest
      */
+    
+    
     myModel.blockWebRequest = function (arr_block){
-        return chrome.webRequest.onHeadersReceived.addListener(function(details){
-            console.log(details);
-            return {
-                redirectUrl: CHROMESTO.redirectURL(OPTIONS.REDIRECT_URL)
-            };
-        },{
+        CHROMESTO.getStorage("redirect", function(page){
+            
+            console.log(page)
+            
+            return chrome.webRequest.onHeadersReceived.addListener(function(details){
+                console.log(details);
+                return {
+                    redirectUrl: CHROMESTO.redirectURL(page)
+                };
+            },{
             types: [
                 OPTIONS.TYPE_OF_PAGES
             ],
-            urls: arr_block
-        },["blocking"])
+                urls: arr_block
+            },["blocking"])
+        })
     };
     
     return myModel
     
 }(Chocolate || {}));
+
+/*
+
+    myModel.blockWebRequest = function (arr_block){
+        CHROMESTO.getStorage("redirect", function(page){
+            
+            console.log(page)
+            
+            return chrome.webRequest.onHeadersReceived.addListener(function(details){
+                console.log(details);
+                return {
+                    redirectUrl: CHROMESTO.redirectURL(page)
+                };
+            },{
+            types: [
+                OPTIONS.TYPE_OF_PAGES
+            ],
+                urls: arr_block
+            },["blocking"])
+        })
+    };
+    
+    return myModel
+
+*/
+
+chrome.webRequest.handlerBehaviorChanged(function(){
+    console.log("handlerBehaviorChanged");
+})

@@ -15,11 +15,12 @@ var CHROMESTO = (function (myModel) {
      * 
      * Редирект на указанную страницу
      * 
-     * @param {primary} optional, true если переадресация первичная 
      * @param {redirect} arrya адреса страниц для переадресации 
      *          
      */
     myModel.redirectURL = function(redirect){
+        
+        console.log(redirect);
         
         return rand(redirect)
         

@@ -8,20 +8,9 @@
             
             var href = $($(this).siblings(".redirect")).val();
             
-            console.log(asd);
+            addRedirect((Chocolate.addURL(href)).slice(0,-1));
+            
         })
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         CHROMESTO.getStorage("block", function(page){
             
@@ -39,17 +28,19 @@
         CHROMESTO.getStorage("redirect", function(page){
             
             if(!page){
-                CHROMESTO.setStorage({redirect: "https://google.com/"},function(){});
+                CHROMESTO.setStorage({redirect: [OPTIONS.REDIRECT_URL]},function(){});
+                chrome.runtime.reload();
                 return;
             }
             
             if(site){
-                CHROMESTO.setStorage({redirect: site},function(){});
-                $("blockquote span").text(site)
+                CHROMESTO.setStorage({redirect: [site]},function(){});
+                $(".listRedirect span").text(site)
+                chrome.runtime.reload();
                 return;
             }
             
-            $("blockquote span").text(page)
+            $(".listRedirect span").text(page)
 
         });
     }
@@ -57,7 +48,7 @@
     function addHTMLStorage(filterMass){
         
         if(!filterMass){
-            $(".dataBlock blockquote").text(OPTIONS.THERE_ARE_NO_BLOCKS);
+            $(".dataBlock .list").text(OPTIONS.THERE_ARE_NO_BLOCKS);
             return;
         }
         

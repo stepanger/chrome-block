@@ -14,7 +14,7 @@ var OPTIONS = (function () {
     return {
         ID_EXPANSION: chrome.runtime.id, 
         STORAGE_NAME: "block",
-        REDIRECT_URL: ["https://google.com/"],
+        REDIRECT_URL: "https://google.com/",
         TYPE_OF_PAGES: "main_frame",
         CONTEXT_MENUS: "Chocolate",
         CONTEXT_MENUS_URL: "Заблокировать страницу",
