@@ -16,6 +16,7 @@
     function addHTMLStorage(filterMass){
         
         if(!filterMass){
+            $(".dataBlock blockquote").text(OPTIONS.THERE_ARE_NO_BLOCKS);
             return;
         }
         
@@ -24,7 +25,7 @@
                 text: index
             }).appendTo($(".border"));
         });
-    };
+    }
     
     function deletStorage(text){
         CHROMESTO.getStorage("block", function(page){

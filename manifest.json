@@ -1,8 +1,8 @@
 {
     "manifest_version": 2, 
     "name": "Chocolate", 
-    "version": "0.2",
-    "description": "Blocks an unwanted site or page",
+    "version": "0.3",
+    "description": "Блокирует нежелательный сайт или страницу",
     "icons": { 
         "16": "icon/icon16.png",
         "48": "icon/icon48.png",
@@ -17,6 +17,7 @@
         "scripts": [
             "src/config.js",
             "src/storage.js",
+            "src/redirect.js",
             "src/blockPage.js",
             "src/blockWebRequest.js",
             "src/startPage.js",

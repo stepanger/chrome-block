@@ -1,4 +1,4 @@
-;var Chocolate = (function (myModel) {
+var Chocolate = (function (myModel) {
     
     console.log("Chocolate ==> blockPage.js");
     
@@ -18,11 +18,15 @@
     
     function createURL(str){
         
+        if(!str){
+            return console.error("createURL - Передано пустое значение!");
+        }
+        
         var parser = document.createElement('a');
         parser.href = str;
     
-        return parser.protocol + "//"+parser.hostname+"/*";;
-    };
+        return parser.protocol + "//"+parser.hostname+"/*";
+    }
     
     /**
      * addChromeURL
@@ -37,6 +41,10 @@
      * @param {string} value Адрес страницы
      */
     function addChromeURL(key, value){
+        
+        if(!key && !value){
+            return console.error("addChromeURL - передано key:"+key+" value:"+value);
+        }
         
         CHROMESTO.getStorage(OPTIONS.STORAGE_NAME, function(block){
             
@@ -82,6 +90,9 @@
      */
     myModel.blockPage = function(key, value, query){
         
+        if(!query){
+            return console.error("blockPage - передано query:"+query);
+        }
         
         if(query === "url"){
             return addChromeURL(key, value);

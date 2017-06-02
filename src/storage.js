@@ -1,4 +1,4 @@
-;var CHROMESTO = (function (myModel) {
+var CHROMESTO = (function (myModel) {
     
     console.log("CHROME ==> storage.js");
     
