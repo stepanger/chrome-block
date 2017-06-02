@@ -2,7 +2,14 @@
     
     $(document).ready(function(){
         
-
+        addRedirect();
+    
+        $(".redirectControl").on("click", ".redirectOK", function(){
+            
+            var href = $($(this).siblings(".redirect")).val();
+            
+            console.log(asd);
+        })
         
         
         
@@ -27,6 +34,25 @@
         })
         
     })
+    
+    function addRedirect(site){
+        CHROMESTO.getStorage("redirect", function(page){
+            
+            if(!page){
+                CHROMESTO.setStorage({redirect: "https://google.com/"},function(){});
+                return;
+            }
+            
+            if(site){
+                CHROMESTO.setStorage({redirect: site},function(){});
+                $("blockquote span").text(site)
+                return;
+            }
+            
+            $("blockquote span").text(page)
+
+        });
+    }
     
     function addHTMLStorage(filterMass){
         
@@ -65,32 +91,3 @@
     
     
 }(jQuery));
-
-/*
-
-        addRedirect();
-    
-        $(".redirectControl").on("click", ".redirectOK", function(){
-            console.log(this);
-        })
-
-    function addRedirect(site){
-        CHROMESTO.getStorage("redirect", function(page){
-            
-            if(!page){
-                CHROMESTO.setStorage({redirect: "https://google.com/"},function(){});
-                return;
-            }
-            
-            if(site){
-                CHROMESTO.setStorage({redirect: site},function(){});
-                $("blockquote span").text(site)
-                return;
-            }else{
-                $("blockquote span").text(page)
-            }
-
-        });
-    }
-
-*/

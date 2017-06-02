@@ -7,7 +7,7 @@ var Chocolate = (function (myModel) {
     /**
      * createURL
      * 
-     * Получает значение адресной строки при нажатии заблокировать сайт,
+     * Получает значение адресной строки,
      * возращая host страницы
      * 
      * createURL("http://google.com/g1231"); //http://google.com/*
@@ -20,6 +20,10 @@ var Chocolate = (function (myModel) {
         
         if(!str){
             return console.error("createURL - Передано пустое значение!");
+        }
+        
+        if(!(OPTIONS.PATTERN_URL).test(str)){
+            return console.error("createURL - не валидно url");
         }
         
         var parser = document.createElement('a');
