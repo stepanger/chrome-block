@@ -2,7 +2,22 @@
     
     $(document).ready(function(){
         
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         CHROMESTO.getStorage("block", function(page){
+            
             addHTMLStorage(page);
         });
         
@@ -51,3 +66,31 @@
     
 }(jQuery));
 
+/*
+
+        addRedirect();
+    
+        $(".redirectControl").on("click", ".redirectOK", function(){
+            console.log(this);
+        })
+
+    function addRedirect(site){
+        CHROMESTO.getStorage("redirect", function(page){
+            
+            if(!page){
+                CHROMESTO.setStorage({redirect: "https://google.com/"},function(){});
+                return;
+            }
+            
+            if(site){
+                CHROMESTO.setStorage({redirect: site},function(){});
+                $("blockquote span").text(site)
+                return;
+            }else{
+                $("blockquote span").text(page)
+            }
+
+        });
+    }
+
+*/

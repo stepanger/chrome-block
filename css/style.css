@@ -17,7 +17,19 @@ body{
     margin-left: 0px;
 }
 
+.redirectControl
 
+.redirect{
+    border: 1px solid #b7b7b7;
+    padding: 5px;
+}
+
+.redirectOK{
+    padding: 6px;
+    background: #8bc63e;
+    border: none;
+    color: #fff;
+}
 
 
 .border{
