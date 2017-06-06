@@ -12,6 +12,7 @@
         "parentId": parentMenu,
         "onclick": (function(info, tab){
             Chocolate.blockPage(tab.title, tab.url, "url");
+            chrome.runtime.reload();
         })
     });
     
@@ -21,6 +22,7 @@
         "parentId": parentMenu,
         "onclick": (function(info, tab){
             Chocolate.blockPage(tab.title, tab.url, "site")
+            chrome.runtime.reload();
         })
     });
     

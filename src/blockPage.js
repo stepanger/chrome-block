@@ -68,11 +68,10 @@ var Chocolate = (function (myModel) {
         }
         
         localBlock[key] = value;
-        
-        var blockStringLocal = JSON.stringify(localBlock)
         //console.log("2 . добавить новое значение в объект и преоброзовать в строку", blockStringLocal)
         
-        return localStorage.setItem(OPTIONS.STORAGE_NAME, blockStringLocal);
+        return localStorage.setItem(OPTIONS.STORAGE_NAME, JSON.stringify(localBlock));
+        
         
         
         /*

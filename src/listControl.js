@@ -3,44 +3,25 @@
     $(document).ready(function(){
         
         //Показ списка заблакированных сайтов
-        CHROMESTO.getStorage("block", function(page){
-            addHTMLStorage(page);
-        });
-        
-        CHROMESTO.getStorage("redirect", function(page){
-            $(".listRedirect span").text(page)  
-        })
-        
-        $(".redirectControl").on("click", ".redirectOK", function(){
-            
-            var href = $(this).siblings(".redirect").val();
-            addRedirect((Chocolate.addURL(href)).slice(0,-1));
-            
-        })
+        addHTMLStorage();
         
         $("ul").on("click", "li", function(){
             $(this).remove();
             deletStorage($(this).text());
+            chrome.runtime.reload();
         })
     })
     
-    function addRedirect(site){
-            
-        if(site){
-            CHROMESTO.setStorage({redirect: [site]},function(){});
-            chrome.runtime.reload(); //Перезагрузка для blockWebRequest
-            return;
-        }
-    }
-    
     function addHTMLStorage(filterMass){
         
-        if(!filterMass){
+        var localBlock = JSON.parse(localStorage.getItem(OPTIONS.STORAGE_NAME));
+        
+        if(!localBlock){
             $(".dataBlock .list").text(OPTIONS.THERE_ARE_NO_BLOCKS);
             return;
         }
         
-        $.each(filterMass, function(index, value) {
+        $.each(localBlock, function(index, value) {
             $('<li/>', {
                 text: index
             }).appendTo($(".border"));
@@ -48,22 +29,18 @@
     }
     
     function deletStorage(text){
-        CHROMESTO.getStorage("block", function(page){
-            var block = page;
+        var localBlock = JSON.parse(localStorage.getItem(OPTIONS.STORAGE_NAME));
+        
+        var block = localBlock;
             
-            delete block[text+""];
+        delete block[text+""];
             
-            if ($.isEmptyObject(block)) {
-                return CHROMESTO.clearStorage(function(){
-                    return chrome.runtime.reload();
-                })
-            }
+        if ($.isEmptyObject(block)) {
+            return localStorage.clear();
+        }
             
-            CHROMESTO.setStorage({block: block}, function(){
-                // Перезапуск
-                chrome.runtime.reload();
-            });
-        });
+        return localStorage.setItem(OPTIONS.STORAGE_NAME, JSON.stringify(block));
+
     }
     
 }(jQuery));
