@@ -15,13 +15,15 @@
     "author": "Stepan (email:creadtive472@gmail.com)",
     "background": {
         "scripts": [
+            "build/jquery-1.11.3.min.js",
             "src/config.js",
             "src/storage.js",
             "src/redirect.js",
             "src/blockPage.js",
             "src/blockWebRequest.js",
             "src/startPage.js",
-            "src/menu.js"
+            "src/menu.js",
+            "src/ajaxLocal.js"
         ],
         "persistent": true
     },

@@ -50,6 +50,24 @@ var Chocolate = (function (myModel) {
             return console.error("addChromeURL - передано key:"+key+" value:"+value);
         }
         
+        var localBlock = localStorage.getItem(OPTIONS.STORAGE_NAME);
+        
+        //при пустом значении localBlock
+        if(!localBlock){
+            
+            console.log("localBlock пуст");
+            
+            var blockStringLocal = '{"'+key+'": "'+value+'"}';
+            
+            // занесено первое значение в local Stroage
+            localStorage.setItem(OPTIONS.STORAGE_NAME, blockStringLocal);
+            
+            return;
+        }
+        
+        console.log(localBlock);
+        
+        /*
         CHROMESTO.getStorage(OPTIONS.STORAGE_NAME, function(block){
             
             console.log(block);
@@ -63,6 +81,7 @@ var Chocolate = (function (myModel) {
                 CHROMESTO.setStorage(block, function(){
                   
                     // Перезапуск
+                    
                     chrome.runtime.reload();
                 });
                 
@@ -74,12 +93,15 @@ var Chocolate = (function (myModel) {
             CHROMESTO.setStorage({block: block}, function(){
                 
                 // Перезапуск
+            
                 chrome.runtime.reload();
             });
           
         });
+        */
         
     };
+
     
     /**
      * blockPage
