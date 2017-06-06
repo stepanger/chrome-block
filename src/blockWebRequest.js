@@ -27,7 +27,7 @@ var Chocolate = (function (myModel) {
         console.log(arr_block_url);
         
         if(arr_block_url.length === 0){
-            return ["http://pornohab.com/*"];
+            return ["http://123.com/*"];
         }
         
         return arr_block_url

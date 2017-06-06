@@ -53,22 +53,16 @@ var Chocolate = (function (myModel) {
         //строка в объект JavaScript
         var localBlock = JSON.parse(localStorage.getItem(OPTIONS.STORAGE_NAME));
         
-        //console.log("1 . Получить строку и преоброзовать в obj", localBlock)
-        
         //при пустом значении localBlock
         if(!localBlock){
             
-            //console.log("1.1 localBlock пуст", localBlock);
-            
             var blockStringLocal = '{"'+key+'": "'+value+'"}';
             
-            //console.log("1.2 строка с новыми значениями", blockStringLocal)
             // занесено первое значение в local Stroage
             return localStorage.setItem(OPTIONS.STORAGE_NAME, blockStringLocal);
         }
         
         localBlock[key] = value;
-        //console.log("2 . добавить новое значение в объект и преоброзовать в строку", blockStringLocal)
         
         return localStorage.setItem(OPTIONS.STORAGE_NAME, JSON.stringify(localBlock));
         

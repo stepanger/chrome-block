@@ -23,7 +23,7 @@
             "src/blockWebRequest.js",
             "src/startPage.js",
             "src/menu.js",
-            "src/ajaxLocal.js"
+            "src/startApp.js"
         ],
         "persistent": true
     },

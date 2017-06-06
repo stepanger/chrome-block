@@ -1,4 +1,4 @@
-(function($){
+(function(){
 
     chrome.webRequest.onBeforeRequest.addListener(function(details){
         
@@ -14,4 +14,4 @@
     urls: Chocolate.blockWebRequest()
     },["blocking"])
     
-}(jQuery));
+}());
