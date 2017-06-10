@@ -30,6 +30,7 @@
     },
     "short_name": "Chocolate",
     "permissions": [
+        "notifications",
         "tabs",
         "webRequest",
         "webRequestBlocking",
