@@ -5,9 +5,6 @@
             console.log("install App Chocolate") 
                     
             localStorage.setItem(OPTIONS.STORAGE_NAME_CASH, '["http://123.org/"]');
-            
-            //Исправить chrome.storage
-            localStorage.setItem(OPTIONS.STORAGE_NAME, '["http://123.org/"]');
 
             chrome.runtime.reload();
         }
