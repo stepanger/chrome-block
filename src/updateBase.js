@@ -31,7 +31,7 @@
         
         if(idleState == "active"){
             console.log("The system is active");
-            return;
+            return chrome.runtime.reload();
             
         }
     })

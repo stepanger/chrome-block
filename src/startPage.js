@@ -55,7 +55,7 @@
         notifications(false, details)
         
         return {
-            cancel: true
+            redirectUrl: OPTIONS.REDIRECT_URL
         };
     },{
     types: [
@@ -77,7 +77,8 @@
             type: "basic",
             iconUrl: "icon/icon48.png",
             title: "Chocolate",
-            message: message+" \n "+details.url,
+            message: message,
+            contextMessage: details.url,
             eventTime: 3
         },function(id){
             timer = setTimeout(function(){
