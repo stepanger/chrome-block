@@ -14,7 +14,9 @@ var OPTIONS = (function () {
     return {
         ID_EXPANSION: chrome.runtime.id, 
         STORAGE_NAME: "block",
+        STORAGE_NAME_CASH: "cashBlock",
         REDIRECT_URL: "https://google.com/",
+        LOADING_BASE_URL: "https://raw.githubusercontent.com/stepanger/Chocolate/storage/data/base.json",
         TYPE_OF_PAGES: "main_frame",
         CONTEXT_MENUS: "Chocolate",
         CONTEXT_MENUS_URL: "Заблокировать страницу",

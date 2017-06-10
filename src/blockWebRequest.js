@@ -12,11 +12,15 @@ var Chocolate = (function (myModel) {
      * @returns {Arrya} arr_block_url массив URL
      */
     
-    myModel.blockWebRequest = function (){
+    myModel.blockWebRequest = function (OPTIONS, type){
         
-        var localBlock = JSON.parse(localStorage.getItem(OPTIONS.STORAGE_NAME));
+        var localBlock = JSON.parse(localStorage.getItem(OPTIONS));
 
         console.log(localBlock);
+        
+        if(type === "arrya"){
+            return localBlock
+        }
         
         var arr_block_url = [];
         
@@ -36,4 +40,3 @@ var Chocolate = (function (myModel) {
     return myModel
     
 }(Chocolate || {}));
-

@@ -19,7 +19,7 @@
             "src/config.js",
             "src/storage.js",
             "src/redirect.js",
-            "src/loading.js",
+            "src/updateBase.js",
             "src/blockPage.js",
             "src/blockWebRequest.js",
             "src/startPage.js",
@@ -30,6 +30,7 @@
     },
     "short_name": "Chocolate",
     "permissions": [
+        "idle",
         "notifications",
         "tabs",
         "webRequest",
