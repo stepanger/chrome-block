@@ -3,10 +3,10 @@
         
         if(details.reason == "install"){
             console.log("install App Chocolate") 
-                    
+            
+            //При запуске заносится значение 
             localStorage.setItem(OPTIONS.STORAGE_NAME_CASH, '["http://123.org/"]');
-
-            chrome.runtime.reload();
+            
         }
         
         if(details.reason == "update"){

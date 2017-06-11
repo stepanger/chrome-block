@@ -132,21 +132,7 @@ var Chocolate = (function (myModel) {
         }
         
     };
-    
-    /**
-     * addURL
-     *  
-     * Добавление редиректа
-     * 
-     * Chocolate.addURL("http://google.com/*")
-     * 
-     * @param   {string}   str   Адресная строка 
-     * @returns {function} "http://google.com/*"
-     */
-    myModel.addURL = function(str){
-        return createURL(str)
-    }
-    
+
     return myModel
     
 }(Chocolate || {}));

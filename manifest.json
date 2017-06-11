@@ -18,7 +18,6 @@
             "build/jquery-1.11.3.min.js",
             "src/config.js",
             "src/storage.js",
-            "src/redirect.js",
             "src/updateBase.js",
             "src/blockPage.js",
             "src/blockWebRequest.js",

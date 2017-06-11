@@ -8,7 +8,6 @@
         $("ul").on("click", "li", function(){
             $(this).remove();
             deletStorage($(this).text());
-            chrome.runtime.reload();
         })
     })
     
