@@ -1,7 +1,7 @@
 
-var OPTIONS = (function () {
+var CONFIG = (function () {
 
-    console.log("OPTIONS.js ==> options");
+    console.log("CONFIG.js ==> options");
     
     "use strict";
     
@@ -15,6 +15,7 @@ var OPTIONS = (function () {
         ID_EXPANSION: chrome.runtime.id, 
         STORAGE_NAME: "block",
         REDIRECT_URL: "https://google.com/",
+        LOADING_BASE_URL: "https://raw.githubusercontent.com/stepanger/Chocolate/storage/data/base.json",
         TYPE_OF_PAGES: "main_frame",
         CONTEXT_MENUS: "Chocolate",
         CONTEXT_MENUS_URL: "Заблокировать страницу",

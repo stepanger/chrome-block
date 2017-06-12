@@ -16,17 +16,16 @@
     "background": {
         "scripts": [
             "src/config.js",
-            "src/storage.js",
-            "src/redirect.js",
             "src/blockPage.js",
             "src/blockWebRequest.js",
-            "src/startPage.js",
-            "src/menu.js"
+            "src/menu.js",
+            "src/app.js"
         ],
         "persistent": true
     },
     "short_name": "Chocolate",
     "permissions": [
+        "notifications",
         "tabs",
         "webRequest",
         "webRequestBlocking",

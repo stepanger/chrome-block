@@ -7,35 +7,33 @@ var Chocolate = (function (myModel) {
     /**
      * blockWebRequest
      * 
-     * Блокировка массив страниц arr_block,
-     * тип страниц OPTIONS.TYPE_OF_PAGES,
-     * редирект на страницу CHROMESTO.redirectURL(page) из storage[redirect]
+     * Создание массив страниц из localStorage
      * 
-     * @param   {Array} arr_block массив URL
-     * @returns {function}   webRequest
+     * @returns {Arrya} arr_block_url массив URL
      */
     
-    
-    myModel.blockWebRequest = function (arr_block){
+    myModel.blockWebRequest = function (OPTIONS, type){
         
-        //Запрос в storage[redirect]
-        CHROMESTO.getStorage("redirect", function(page){
-            
-            console.info(page)
-            
-            return chrome.webRequest.onBeforeRequest.addListener(function(details){
-                return {
-                    redirectUrl: CHROMESTO.redirectURL(page)
-                };
-            },{
-            types: [
-                OPTIONS.TYPE_OF_PAGES
-            ],
-                urls: arr_block
-            },["blocking"])
-        })
+        var localBlock = JSON.parse(localStorage.getItem(OPTIONS));
+
+        
+        if(type === "arrya"){
+            return localBlock
+        }
+        
+        var arr_block_url = [];
+        
+        for (key in localBlock) {
+            arr_block_url[arr_block_url.length] = localBlock[key]
+        }
+        
+        if(arr_block_url.length === 0){
+            return false
+        }
+        
+        return arr_block_url
     };
-    
+
     return myModel
     
 }(Chocolate || {}));

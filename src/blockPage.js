@@ -22,7 +22,7 @@ var Chocolate = (function (myModel) {
             return console.error("createURL - Передано пустое значение!");
         }
         
-        if(!(OPTIONS.PATTERN_URL).test(url)){
+        if(!(CONFIG.PATTERN_URL).test(url)){
             return console.error("createURL - не валидно url");
         }
         
@@ -35,7 +35,7 @@ var Chocolate = (function (myModel) {
     /**
      * addChromeURL
      * 
-     * Заносит значение в Chrome Storage 
+     * Заносит значение в Local Storage 
      * если в storage нет объекта block, создается новая запись,
      * после внесения записи расширение перезапускается
      * 
@@ -50,36 +50,24 @@ var Chocolate = (function (myModel) {
             return console.error("addChromeURL - передано key:"+key+" value:"+value);
         }
         
-        CHROMESTO.getStorage(OPTIONS.STORAGE_NAME, function(block){
-            
-            console.log(block);
-            
-            //при пустом значении block
-            if(!block){
-                
-                var block = '{"block":{"'+key+'": "'+value+'"}}';
-                block = JSON.parse(block);   
-                
-                CHROMESTO.setStorage(block, function(){
-                  
-                    // Перезапуск
-                    chrome.runtime.reload();
-                });
-                
-                return;
-            }
-          
-            block[key] = value;
+        //строка в объект JavaScript
+        var localBlock = JSON.parse(localStorage.getItem(CONFIG.STORAGE_NAME));
         
-            CHROMESTO.setStorage({block: block}, function(){
-                
-                // Перезапуск
-                chrome.runtime.reload();
-            });
-          
-        });
+        //при пустом значении localBlock
+        if(!localBlock){
+            
+            var blockStringLocal = '{"'+key+'": "'+value+'"}';
+            
+            // занесено первое значение в local Stroage
+            return localStorage.setItem(CONFIG.STORAGE_NAME, blockStringLocal);
+        }
+        
+        localBlock[key] = value;
+        
+        return localStorage.setItem(CONFIG.STORAGE_NAME, JSON.stringify(localBlock));
         
     };
+
     
     /**
      * blockPage
@@ -108,21 +96,7 @@ var Chocolate = (function (myModel) {
         }
         
     };
-    
-    /**
-     * addURL
-     *  
-     * Добавление редиректа
-     * 
-     * Chocolate.addURL("http://google.com/*")
-     * 
-     * @param   {string}   str   Адресная строка 
-     * @returns {function} "http://google.com/*"
-     */
-    myModel.addURL = function(str){
-        return createURL(str)
-    }
-    
+
     return myModel
     
 }(Chocolate || {}));
